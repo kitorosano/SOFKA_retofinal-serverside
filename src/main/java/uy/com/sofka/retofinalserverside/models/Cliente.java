@@ -8,7 +8,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Cliente {
   
   @Id
-  // @Indexeds
   private final String documento;
   private final String nombre;
   private final String celular;

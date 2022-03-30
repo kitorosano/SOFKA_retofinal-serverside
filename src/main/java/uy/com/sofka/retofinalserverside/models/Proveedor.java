@@ -8,7 +8,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Proveedor {
 
   @Id
-  // @Indexed
   private final String codigo;
   private final String nombre;
   private final String celular;

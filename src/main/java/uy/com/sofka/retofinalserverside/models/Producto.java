@@ -3,18 +3,12 @@ package uy.com.sofka.retofinalserverside.models;
 import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "inventario")
 public class Producto {
 
-  @Transient
-  public static final String SEQUENCE_NAME = "inventario_sequence";
-  
   @Id
-  // @Indexed
   private final String id = UUID.randomUUID().toString().substring(0, 10);
   private final String nombre;
   private final String descripcion;

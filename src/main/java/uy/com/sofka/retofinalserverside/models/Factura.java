@@ -2,17 +2,14 @@ package uy.com.sofka.retofinalserverside.models;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class Factura {
   
-  @Id
+  @Id 
   private final Long consecutivo;
   private final LocalDateTime fecha;
   private final String nombreCliente;
