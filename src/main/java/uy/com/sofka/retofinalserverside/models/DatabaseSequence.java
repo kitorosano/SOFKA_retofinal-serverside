@@ -1,10 +1,8 @@
 package uy.com.sofka.retofinalserverside.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.stereotype.Component;
 
 @Document(collection = "database_sequences")
-@Component
 public class DatabaseSequence {
 
   @Id

@@ -5,5 +5,5 @@ import uy.com.sofka.retofinalserverside.models.ProductoDTO;
 
 public interface IProductoService {
 
-  Long generateSequence(String seqName);
+  Mono<ProductoDTO> save(ProductoDTO productoDTO);
 }

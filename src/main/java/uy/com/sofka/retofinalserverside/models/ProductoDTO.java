@@ -4,11 +4,11 @@ public class ProductoDTO {
   private String id;
   private String nombre;
   private String descripcion;
+  private String categoria;
   private Integer stock;
   private Integer minStock;
   private Integer maxStock;
   private Double precio;
-  private String categoria;
 
   public ProductoDTO() {}
 
@@ -35,6 +35,14 @@ public class ProductoDTO {
 
   public void setDescripcion(String descripcion) {
     this.descripcion = descripcion;
+  }
+
+  public String getCategoria() {
+    return this.categoria;
+  }
+
+  public void setCategoria(String categoria) {
+    this.categoria = categoria;
   }
 
   public Integer getStock() {
@@ -67,14 +75,6 @@ public class ProductoDTO {
 
   public void setPrecio(Double precio) {
     this.precio = precio;
-  }
-
-  public String getCategoria() {
-    return this.categoria;
-  }
-
-  public void setCategoria(String categoria) {
-    this.categoria = categoria;
   }
 
 }

@@ -29,7 +29,7 @@ public class FacturaDTO {
     return this.atendedor;
   }
 
-  public HashMap<Long, Integer> getProductos() {
+  public HashMap<Long, Integer> getProductosComprados() {
     return this.productosComprados;
   }
 
@@ -53,7 +53,7 @@ public class FacturaDTO {
     this.atendedor = atendedor;
   }
 
-  public void setProductos(HashMap<Long, Integer> productosComprados) {
+  public void setProductosComprados(HashMap<Long, Integer> productosComprados) {
     this.productosComprados = productosComprados;
   }
 

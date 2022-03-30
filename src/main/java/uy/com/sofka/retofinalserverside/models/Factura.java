@@ -4,28 +4,24 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class Factura {
+
+  
+  @Transient
+  public static final String SEQUENCE_NAME = "users_sequence";
   
   @Id 
-  private final Long consecutivo;
-  private final LocalDateTime fecha;
-  private final String nombreCliente;
-  private final String atendedor;
-  private final HashMap<Long, Integer> productosComprados;
-  private final Double total;
-
-  public Factura(Long consecutivo, LocalDateTime fecha, String nombreCliente, String atendedor, HashMap<Long, Integer> productosComprados, Double total) {
-    this.consecutivo = consecutivo;
-    this.fecha = fecha;
-    this.nombreCliente = nombreCliente;
-    this.atendedor = atendedor;
-    this.productosComprados = productosComprados;
-    this.total = total;
-  }
-
+  private Long consecutivo;
+  private LocalDateTime fecha;
+  private String nombreCliente;
+  private String atendedor;
+  private HashMap<Long, Integer> productosComprados;
+  private Double total;
+  
   public Long getConsecutivo() {
     return this.consecutivo;
   }
@@ -42,11 +38,32 @@ public class Factura {
     return this.atendedor;
   }
 
-  public HashMap<Long, Integer> getProductos() {
+  public HashMap<Long,Integer> getProductosComprados() {
     return this.productosComprados;
   }
+
 
   public Double getTotal() {
     return this.total;
   }
+
+  public void setConsecutivo(Long consecutivo) {
+    this.consecutivo = consecutivo;
+  }
+  public void setFecha(LocalDateTime fecha) {
+    this.fecha = fecha;
+  }
+  public void setNombreCliente(String nombreCliente) {
+    this.nombreCliente = nombreCliente;
+  }
+  public void setAtendedor(String atendedor) {
+    this.atendedor = atendedor;
+  }
+  public void setProductosComprados(HashMap<Long,Integer> productosComprados) {
+    this.productosComprados = productosComprados;
+  }
+  public void setTotal(Double total) {
+    this.total = total;
+  }
+
 }

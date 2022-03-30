@@ -9,26 +9,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Producto {
 
   @Id
-  private final String id = UUID.randomUUID().toString().substring(0, 10);
-  private final String nombre;
-  private final String descripcion;
-  private final Integer stock;
-  private final Integer minStock;
-  private final Integer maxStock;
-  private final Double precio;
-  private final String categoria;
-
-  public Producto(String nombre, String descripcion, Integer stock, Integer minStock, Integer maxStock, Double precio, String categoria) {
-    this.nombre = nombre;
-    this.descripcion = descripcion;
-    this.stock = stock;
-    this.minStock = minStock;
-    this.maxStock = maxStock;
-    this.precio = precio;
-    this.categoria = categoria;
-  }
-
-
+  private String id = UUID.randomUUID().toString().substring(0, 10);
+  private String nombre;
+  private String descripcion;
+  private String categoria;
+  private Integer stock;
+  private Integer minStock;
+  private Integer maxStock;
+  private Double precio;
+ 
   public String getId() {
     return this.id;
   }
@@ -39,6 +28,10 @@ public class Producto {
 
   public String getDescripcion() {
     return this.descripcion;
+  }
+
+  public String getCategoria() {
+    return this.categoria;
   }
 
   public Integer getStock() {
@@ -56,9 +49,30 @@ public class Producto {
   public Double getPrecio() {
     return this.precio;
   }
-
-  public String getCategoria() {
-    return this.categoria;
+  
+  public void setId(String id) {
+    this.id = id;
+  }
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
+  public void setDescripcion(String descripcion) {
+    this.descripcion = descripcion;
+  }
+  public void setCategoria(String categoria) {
+    this.categoria = categoria;
+  }
+  public void setStock(Integer stock) {
+    this.stock = stock;
+  }
+  public void setMinStock(Integer minStock) {
+    this.minStock = minStock;
+  }
+  public void setMaxStock(Integer maxStock) {
+    this.maxStock = maxStock;
+  }
+  public void setPrecio(Double precio) {
+    this.precio = precio;
   }
 
   

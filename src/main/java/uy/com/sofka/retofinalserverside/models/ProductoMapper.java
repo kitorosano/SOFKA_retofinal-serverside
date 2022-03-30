@@ -7,15 +7,14 @@ import java.util.List;
 public class ProductoMapper {
 
   public Producto fromDTO(ProductoDTO dto) {
-      Producto producto = new Producto(
-          dto.getNombre(),
-          dto.getDescripcion(),
-          dto.getStock(),
-          dto.getMinStock(),
-          dto.getMaxStock(),
-          dto.getPrecio(),
-          dto.getCategoria()
-      );
+      Producto producto = new Producto();
+      producto.setNombre(dto.getNombre());
+      producto.setDescripcion(dto.getDescripcion());
+      producto.setCategoria(dto.getCategoria());
+      producto.setStock(dto.getStock());
+      producto.setMinStock(dto.getMinStock());
+      producto.setMaxStock(dto.getMaxStock());
+      producto.setPrecio(dto.getPrecio());
       return producto;
   }
 
@@ -35,7 +34,7 @@ public class ProductoMapper {
       if (collection == null) return null;
       
       List<ProductoDTO> list = new ArrayList<ProductoDTO>(collection.size());
-      Iterator listTracks = collection.iterator();
+      Iterator<Producto> listTracks = collection.iterator();
 
       while(listTracks.hasNext()) {
         Producto producto = (Producto)listTracks.next();
