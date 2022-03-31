@@ -1,11 +1,10 @@
-package uy.com.sofka.retofinalserverside.listeners;
+package uy.com.sofka.retofinalserverside.models.Factura;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.mapping.event.AbstractMongoEventListener;
 import org.springframework.data.mongodb.core.mapping.event.BeforeConvertEvent;
 import org.springframework.stereotype.Component;
 
-import uy.com.sofka.retofinalserverside.models.Factura.Factura;
 import uy.com.sofka.retofinalserverside.services.IFacturaService;
 
 @Component
