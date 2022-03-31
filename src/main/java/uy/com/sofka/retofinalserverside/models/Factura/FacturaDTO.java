@@ -1,14 +1,17 @@
 package uy.com.sofka.retofinalserverside.models.Factura;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import org.springframework.data.util.Pair;
 
 public class FacturaDTO {
   private Long consecutivo;
   private LocalDateTime fecha;
   private String nombreCliente;
   private String atendedor;
-  private HashMap<Long, Integer> productosComprados;
+  // private Set<Pair<Long, Integer>> productosComprados;
+  private Map<Long, Integer> productosComprados;
   private Double total;
 
   public FacturaDTO(){}
@@ -29,7 +32,8 @@ public class FacturaDTO {
     return this.atendedor;
   }
 
-  public HashMap<Long, Integer> getProductosComprados() {
+  // public Set<Pair<Long, Integer>> getProductosComprados() {
+  public Map<Long, Integer> getProductosComprados() {
     return this.productosComprados;
   }
 
@@ -53,7 +57,8 @@ public class FacturaDTO {
     this.atendedor = atendedor;
   }
 
-  public void setProductosComprados(HashMap<Long, Integer> productosComprados) {
+  // public void setProductosComprados(Set<Pair<Long, Integer>> productosComprados) {
+  public void setProductosComprados(Map<Long, Integer> productosComprados) {
     this.productosComprados = productosComprados;
   }
 

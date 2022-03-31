@@ -7,10 +7,8 @@ public class DatabaseSequence {
 
   @Id
   private String id;
-  private long seq;
-
-  // private long facturaSeq;
-  // private long volanteSeq;
+  private long facturaSeq;
+  private long volanteSeq;
 
   public DatabaseSequence() {}
 
@@ -21,30 +19,22 @@ public class DatabaseSequence {
   public void setId(String id) {
       this.id = id;
   }
-
-  public long getSeq() {
-      return seq;
-  }
-
-  public void setSeq(long seq) {
-      this.seq = seq;
-  }
   
-  // public long getFacturaSeq() {
-  //   return this.facturaSeq;
-  // }
+  public long getFacturaSeq() {
+    return this.facturaSeq;
+  }
 
-  // public void setFacturaSeq(long facturaSeq) {
-  //   this.facturaSeq = facturaSeq;
-  // }
+  public void setFacturaSeq(long facturaSeq) {
+    this.facturaSeq = facturaSeq;
+  }
 
-  // public long getVolanteSeq() {
-  //   return this.volanteSeq;
-  // }
+  public long getVolanteSeq() {
+    return this.volanteSeq;
+  }
 
-  // public void setVolanteSeq(long volanteSeq) {
-  //   this.volanteSeq = volanteSeq;
-  // }
+  public void setVolanteSeq(long volanteSeq) {
+    this.volanteSeq = volanteSeq;
+  }
 
 }
    

@@ -5,7 +5,6 @@ import reactor.core.publisher.Mono;
 import uy.com.sofka.retofinalserverside.models.Factura.FacturaDTO;
 
 public interface IFacturaService {
-
   Mono<FacturaDTO> save(FacturaDTO facturaDTO);
   Mono<FacturaDTO> findById(Long id);
   Flux<FacturaDTO> findAll();

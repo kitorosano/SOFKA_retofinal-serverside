@@ -57,4 +57,16 @@ public class Volante {
     this.documentoProveedor = documentoProveedor;
   }
 
+
+  @Override
+  public String toString() {
+    return "{" +
+      " nroVolante='" + getNroVolante() + "'" +
+      ", nombreProveedor='" + getNombreProveedor() + "'" +
+      ", productosIngresar='" + getProductosIngresar() + "'" +
+      ", fecha='" + getFecha() + "'" +
+      ", documentoProveedor='" + getDocumentoProveedor() + "'" +
+      "}";
+  }
+
 }

@@ -37,7 +37,7 @@ public class ProductoController {
   }
     
   @GetMapping("/{id}")
-  public Mono<ProductoDTO> findById(String id) {
+  public Mono<ProductoDTO> findById(@PathVariable("id") String id) {
     return service.findById(id);
   }
   

@@ -32,5 +32,13 @@ public class Proveedor {
     this.celular = celular;
   }
 
+  @Override
+  public String toString() {
+    return "{" +
+      " codigo='" + getCodigo() + "'" +
+      ", nombre='" + getNombre() + "'" +
+      ", celular='" + getCelular() + "'" +
+      "}";
+  }
 
 }

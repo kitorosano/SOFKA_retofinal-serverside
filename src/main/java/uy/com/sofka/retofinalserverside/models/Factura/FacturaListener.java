@@ -15,6 +15,7 @@ public class FacturaListener extends AbstractMongoEventListener<Factura> {
 
   @Override
   public void onBeforeConvert(BeforeConvertEvent<Factura> event) {
+    System.out.println(event.getSource());
     if (event.getSource().getConsecutivo() < 1) {
         event.getSource().setConsecutivo(service.generateSequence(Factura.SEQUENCE_NAME));
     }

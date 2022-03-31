@@ -33,8 +33,8 @@ public class ProveedorServiceImpl implements IProveedorService {
 
   @Override
   public Flux<ProveedorDTO> findAll() {
-    Flux<Proveedor> proveedors = repository.findAll();
-    return Flux.fromIterable(mapper.fromCollectionList(proveedors.collectList().block()));
+    Flux<Proveedor> proveedores = repository.findAll();
+    return Flux.fromIterable(mapper.fromCollectionList(proveedores.collectList().block()));
   }
 
   @Override

@@ -37,7 +37,7 @@ public class FacturaController {
   }
     
   @GetMapping("/{id}")
-  public Mono<FacturaDTO> findById(Long id) {
+  public Mono<FacturaDTO> findById(@PathVariable("id") Long id) {
     return service.findById(id);
   }
   

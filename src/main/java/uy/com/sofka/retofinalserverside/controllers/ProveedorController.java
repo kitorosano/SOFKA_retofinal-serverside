@@ -18,43 +18,43 @@ import uy.com.sofka.retofinalserverside.services.IProveedorService;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/cliente")
+@RequestMapping("/proveedor")
 public class ProveedorController {
   
   @Autowired
-  private IProveedorService proveedor;
+  private IProveedorService service;
 
   // ============ POST ===================
   @PostMapping("")
-  public Mono<ProveedorDTO> create(@RequestBody ProveedorDTO cliente) {
-    return proveedor.save(cliente);
+  public Mono<ProveedorDTO> create(@RequestBody ProveedorDTO proveedor) {
+    return service.save(proveedor);
   }
 
   // ============ GET ===================
   @GetMapping("")
   public Flux<ProveedorDTO> findAll() {
-    return proveedor.findAll();
+    return service.findAll();
   }
     
   @GetMapping("/{id}")
-  public Mono<ProveedorDTO> findById(String id) {
-    return proveedor.findById(id);
+  public Mono<ProveedorDTO> findById(@PathVariable("id") String id) {
+    return service.findById(id);
   }
   
   // ============ PUT ===================
   @PutMapping("/{id}")
-  public Mono<ProveedorDTO> update(@PathVariable("id") String id, @RequestBody ProveedorDTO cliente) {
-    return proveedor.update(id, cliente);
+  public Mono<ProveedorDTO> update(@PathVariable("id") String id, @RequestBody ProveedorDTO proveedor) {
+    return service.update(id, proveedor);
   }
 
   // ============ DELETE ===================
   @DeleteMapping("/{id}")
   public Mono<Void> delete(@PathVariable("id") String id) {
-    return proveedor.delete(id);
+    return service.delete(id);
   }
 
   @DeleteMapping("")
   public Mono<Void> deleteAll() {
-    return proveedor.deleteAll();
+    return service.deleteAll();
   }
 }

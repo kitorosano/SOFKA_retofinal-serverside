@@ -1,12 +1,14 @@
 package uy.com.sofka.retofinalserverside.models.Cliente;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class Cliente {
   
   @Id
+  @Indexed
   private String documento;
   private String nombre;
   private String celular;
@@ -31,6 +33,15 @@ public class Cliente {
   }
   public void setCelular(String celular) {
     this.celular = celular;
+  }
+
+  @Override
+  public String toString() {
+    return "{" +
+      " documento='" + getDocumento() + "'" +
+      ", nombre='" + getNombre() + "'" +
+      ", celular='" + getCelular() + "'" +
+      "}";
   }
 
 }

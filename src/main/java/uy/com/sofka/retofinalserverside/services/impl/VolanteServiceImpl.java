@@ -44,7 +44,7 @@ public class VolanteServiceImpl implements IVolanteService {
                                 new Update().inc("seq",1), options().returnNew(true).upsert(true),
                                 DatabaseSequence.class)
                               ;
-    return !Objects.isNull(counter) ? counter.getSeq() : 1;
+    return !Objects.isNull(counter) ? counter.getFacturaSeq() : 1;
   }
 
   @Override

@@ -5,7 +5,6 @@ import reactor.core.publisher.Mono;
 import uy.com.sofka.retofinalserverside.models.Volante.VolanteDTO;
 
 public interface IVolanteService {
-  
   Mono<VolanteDTO> save(VolanteDTO volanteDTO);
   Mono<VolanteDTO> findById(Long id);
   Flux<VolanteDTO> findAll();

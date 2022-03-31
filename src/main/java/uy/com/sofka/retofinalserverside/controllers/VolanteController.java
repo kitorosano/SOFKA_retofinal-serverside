@@ -37,7 +37,7 @@ public class VolanteController {
   }
     
   @GetMapping("/{id}")
-  public Mono<VolanteDTO> findById(Long id) {
+  public Mono<VolanteDTO> findById(@PathVariable("id") Long id) {
     return service.findById(id);
   }
   

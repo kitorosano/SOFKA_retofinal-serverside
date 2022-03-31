@@ -75,5 +75,19 @@ public class Producto {
     this.precio = precio;
   }
 
+
+  @Override
+  public String toString() {
+    return "{" +
+      " id='" + getId() + "'" +
+      ", nombre='" + getNombre() + "'" +
+      ", descripcion='" + getDescripcion() + "'" +
+      ", categoria='" + getCategoria() + "'" +
+      ", stock='" + getStock() + "'" +
+      ", minStock='" + getMinStock() + "'" +
+      ", maxStock='" + getMaxStock() + "'" +
+      ", precio='" + getPrecio() + "'" +
+      "}";
+  }
   
 }
