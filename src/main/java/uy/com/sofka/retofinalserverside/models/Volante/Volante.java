@@ -4,28 +4,25 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class Volante {
   
+  @Transient
+  public static final String SEQUENCE_NAME = "users_sequence";
+
+
   @Id 
-  private final Long nroVoltante;
-  private final String nombreProveedor;
-  private final HashMap<Long, Integer> productosIngresar;
-  private final LocalDateTime fecha;
-  private final Long documentoProveedor;
+  private Long nroVolante;
+  private String nombreProveedor;
+  private HashMap<Long, Integer> productosIngresar;
+  private LocalDateTime fecha;
+  private Long documentoProveedor;
 
-  public Volante(Long nroVoltante, String nombreProveedor, HashMap<Long, Integer> productosIngresar, LocalDateTime fecha, Long documentoProveedor) {
-    this.nroVoltante = nroVoltante;
-    this.nombreProveedor = nombreProveedor;
-    this.productosIngresar = productosIngresar;
-    this.fecha = fecha;
-    this.documentoProveedor = documentoProveedor;
-  }
-
-  public Long getNroVoltante() {
-    return this.nroVoltante;
+  public Long getNroVolante() {
+    return this.nroVolante;
   }
 
   public String getNombreProveedor() {
@@ -42,6 +39,22 @@ public class Volante {
 
   public Long getDocumentoProveedor() {
     return this.documentoProveedor;
+  }
+
+  public void setNroVolante(Long nroVolante) {
+    this.nroVolante = nroVolante;
+  }
+  public void setNombreProveedor(String nombreProveedor) {
+    this.nombreProveedor = nombreProveedor;
+  }
+  public void setProductosIngresar(HashMap<Long,Integer> productosIngresar) {
+    this.productosIngresar = productosIngresar;
+  }
+  public void setFecha(LocalDateTime fecha) {
+    this.fecha = fecha;
+  }
+  public void setDocumentoProveedor(Long documentoProveedor) {
+    this.documentoProveedor = documentoProveedor;
   }
 
 }

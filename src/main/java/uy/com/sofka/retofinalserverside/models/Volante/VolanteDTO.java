@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 
 public class VolanteDTO {
-  private Long nroVoltante;
+  private Long nroVolante;
   private String nombreProveedor;
   private HashMap<Long, Integer> productosIngresar;
   private LocalDateTime fecha;
@@ -13,12 +13,12 @@ public class VolanteDTO {
   public VolanteDTO() {}
 
 
-  public Long getNroVoltante() {
-    return this.nroVoltante;
+  public Long getNroVolante() {
+    return this.nroVolante;
   }
 
-  public void setNroVoltante(Long nroVoltante) {
-    this.nroVoltante = nroVoltante;
+  public void setNroVolante(Long nroVolante) {
+    this.nroVolante = nroVolante;
   }
 
   public String getNombreProveedor() {

@@ -13,38 +13,38 @@ import org.springframework.web.bind.annotation.RestController;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import uy.com.sofka.retofinalserverside.models.Factura.FacturaDTO;
-import uy.com.sofka.retofinalserverside.services.IFacturaService;
+import uy.com.sofka.retofinalserverside.models.Volante.VolanteDTO;
+import uy.com.sofka.retofinalserverside.services.IVolanteService;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/factura")
-public class FacturaController {
+@RequestMapping("/volante")
+public class VolanteController {
   
   @Autowired
-  private IFacturaService service;
+  private IVolanteService service;
 
   // ============ POST ===================
   @PostMapping("")
-  public Mono<FacturaDTO> create(@RequestBody FacturaDTO factura) {
-    return service.save(factura);
+  public Mono<VolanteDTO> create(@RequestBody VolanteDTO volante) {
+    return service.save(volante);
   }
 
   // ============ GET ===================
   @GetMapping("")
-  public Flux<FacturaDTO> findAll() {
+  public Flux<VolanteDTO> findAll() {
     return service.findAll();
   }
     
   @GetMapping("/{id}")
-  public Mono<FacturaDTO> findById(Long id) {
+  public Mono<VolanteDTO> findById(Long id) {
     return service.findById(id);
   }
   
   // ============ PUT ===================
   @PutMapping("/{id}")
-  public Mono<FacturaDTO> update(@PathVariable("id") Long id, @RequestBody FacturaDTO factura) {
-    return service.update(id, factura);
+  public Mono<VolanteDTO> update(@PathVariable("id") Long id, @RequestBody VolanteDTO volante) {
+    return service.update(id, volante);
   }
 
   // ============ DELETE ===================
