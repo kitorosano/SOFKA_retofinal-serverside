@@ -7,15 +7,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Proveedor {
 
   @Id
-  private final String codigo;
-  private final String nombre;
-  private final String celular;
-
-  public Proveedor(String codigo, String nombre, String celular) {
-    this.codigo = codigo;
-    this.nombre = nombre;
-    this.celular = celular;
-  }
+  private String codigo;
+  private String nombre;
+  private String celular;
 
   public String getCodigo() {
     return this.codigo;
@@ -28,4 +22,15 @@ public class Proveedor {
   public String getCelular() {
     return this.celular;
   }
+  public void setCodigo(String codigo) {
+    this.codigo = codigo;
+  }
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
+  public void setCelular(String celular) {
+    this.celular = celular;
+  }
+
+
 }

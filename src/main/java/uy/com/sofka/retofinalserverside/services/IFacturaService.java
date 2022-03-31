@@ -6,10 +6,10 @@ import uy.com.sofka.retofinalserverside.models.Factura.FacturaDTO;
 
 public interface IFacturaService {
 
-  Mono<FacturaDTO> save(FacturaDTO productoDTO);
+  Mono<FacturaDTO> save(FacturaDTO facturaDTO);
   Mono<FacturaDTO> findById(Long id);
   Flux<FacturaDTO> findAll();
-  Mono<FacturaDTO> update(Long id, FacturaDTO productoDTO);
+  Mono<FacturaDTO> update(Long id, FacturaDTO facturaDTO);
   Mono<Void> delete(Long id);
   Mono<Void> deleteAll();
   Long generateSequence(String seqName);

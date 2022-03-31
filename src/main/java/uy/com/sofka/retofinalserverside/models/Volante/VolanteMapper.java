@@ -7,22 +7,22 @@ import java.util.List;
 public class VolanteMapper {
   
   public Volante fromDTO(VolanteDTO dto) {
-    Volante factura = new Volante();
-    factura.setNombreProveedor(dto.getNombreProveedor());
-    factura.setProductosIngresar(dto.getProductosIngresar());
-    factura.setFecha(dto.getFecha());
-    factura.setDocumentoProveedor(dto.getDocumentoProveedor());
-    return factura;
+    Volante volante = new Volante();
+    volante.setNombreProveedor(dto.getNombreProveedor());
+    volante.setProductosIngresar(dto.getProductosIngresar());
+    volante.setFecha(dto.getFecha());
+    volante.setDocumentoProveedor(dto.getDocumentoProveedor());
+    return volante;
   }
 
   public VolanteDTO fromCollection(Volante collection) {
-      VolanteDTO facturaDTO = new VolanteDTO();
-      facturaDTO.setNroVolante(collection.getNroVolante());
-      facturaDTO.setNombreProveedor(collection.getNombreProveedor());
-      facturaDTO.setProductosIngresar(collection.getProductosIngresar());
-      facturaDTO.setFecha(collection.getFecha());
-      facturaDTO.setDocumentoProveedor(collection.getDocumentoProveedor());
-      return facturaDTO;
+      VolanteDTO volanteDTO = new VolanteDTO();
+      volanteDTO.setNroVolante(collection.getNroVolante());
+      volanteDTO.setNombreProveedor(collection.getNombreProveedor());
+      volanteDTO.setProductosIngresar(collection.getProductosIngresar());
+      volanteDTO.setFecha(collection.getFecha());
+      volanteDTO.setDocumentoProveedor(collection.getDocumentoProveedor());
+      return volanteDTO;
   }
 
   public List<VolanteDTO> fromCollectionList(List<Volante> collection) {
@@ -32,8 +32,8 @@ public class VolanteMapper {
     Iterator<Volante> listTracks = collection.iterator();
 
     while(listTracks.hasNext()) {
-      Volante factura = (Volante)listTracks.next();
-      list.add(fromCollection(factura));
+      Volante volante = (Volante)listTracks.next();
+      list.add(fromCollection(volante));
     }
 
     return list;
