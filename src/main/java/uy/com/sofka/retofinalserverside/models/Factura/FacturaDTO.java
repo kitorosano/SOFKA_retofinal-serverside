@@ -1,4 +1,4 @@
-package uy.com.sofka.retofinalserverside.models;
+package uy.com.sofka.retofinalserverside.models.Factura;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;

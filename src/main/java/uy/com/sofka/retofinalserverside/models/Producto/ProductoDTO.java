@@ -1,4 +1,4 @@
-package uy.com.sofka.retofinalserverside.models;
+package uy.com.sofka.retofinalserverside.models.Producto;
 
 public class ProductoDTO {
   private String id;

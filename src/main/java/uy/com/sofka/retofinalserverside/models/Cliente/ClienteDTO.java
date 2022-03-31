@@ -1,4 +1,4 @@
-package uy.com.sofka.retofinalserverside.models;
+package uy.com.sofka.retofinalserverside.models.Cliente;
 
 public class ClienteDTO {
   private String documento;

@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.core.mapping.event.AbstractMongoEventLis
 import org.springframework.data.mongodb.core.mapping.event.BeforeConvertEvent;
 import org.springframework.stereotype.Component;
 
-import uy.com.sofka.retofinalserverside.models.Factura;
+import uy.com.sofka.retofinalserverside.models.Factura.Factura;
 import uy.com.sofka.retofinalserverside.services.IFacturaService;
 
 @Component

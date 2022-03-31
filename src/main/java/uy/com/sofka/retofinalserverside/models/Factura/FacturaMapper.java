@@ -1,4 +1,4 @@
-package uy.com.sofka.retofinalserverside.models;
+package uy.com.sofka.retofinalserverside.models.Factura;
 
 import java.util.ArrayList;
 import java.util.Iterator;

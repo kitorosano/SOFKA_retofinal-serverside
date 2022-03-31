@@ -1,4 +1,4 @@
-package uy.com.sofka.retofinalserverside.models;
+package uy.com.sofka.retofinalserverside.models.Proveedor;
 
 public class ProveedorDTO {
   private String codigo;

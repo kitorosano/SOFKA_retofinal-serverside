@@ -1,4 +1,4 @@
-package uy.com.sofka.retofinalserverside.models;
+package uy.com.sofka.retofinalserverside.models.Producto;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -23,6 +23,7 @@ public class ProductoMapper {
       productoDTO.setId(collection.getId());
       productoDTO.setNombre(collection.getNombre());
       productoDTO.setDescripcion(collection.getDescripcion());
+      productoDTO.setCategoria(collection.getCategoria());
       productoDTO.setStock(collection.getStock());
       productoDTO.setMinStock(collection.getMinStock());
       productoDTO.setMaxStock(collection.getMaxStock());

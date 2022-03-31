@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 
 import reactor.core.publisher.Mono;
 import uy.com.sofka.retofinalserverside.models.DatabaseSequence;
-import uy.com.sofka.retofinalserverside.models.Factura;
-import uy.com.sofka.retofinalserverside.models.FacturaDTO;
-import uy.com.sofka.retofinalserverside.models.FacturaMapper;
+import uy.com.sofka.retofinalserverside.models.Factura.Factura;
+import uy.com.sofka.retofinalserverside.models.Factura.FacturaDTO;
+import uy.com.sofka.retofinalserverside.models.Factura.FacturaMapper;
 import uy.com.sofka.retofinalserverside.repositories.IFacturaRepository;
 import uy.com.sofka.retofinalserverside.services.IFacturaService;
 

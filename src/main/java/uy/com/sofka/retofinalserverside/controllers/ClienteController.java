@@ -13,38 +13,38 @@ import org.springframework.web.bind.annotation.RestController;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import uy.com.sofka.retofinalserverside.models.Producto.ProductoDTO;
-import uy.com.sofka.retofinalserverside.services.IProductoService;
+import uy.com.sofka.retofinalserverside.models.Cliente.ClienteDTO;
+import uy.com.sofka.retofinalserverside.services.IClienteService;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/producto")
-public class ProductoController {
-  
+@RequestMapping("/cliente")
+public class ClienteController {
+   
   @Autowired
-  private IProductoService service;
+  private IClienteService service;
 
   // ============ POST ===================
   @PostMapping("")
-  public Mono<ProductoDTO> create(@RequestBody ProductoDTO producto) {
-    return service.save(producto);
+  public Mono<ClienteDTO> create(@RequestBody ClienteDTO cliente) {
+    return service.save(cliente);
   }
 
   // ============ GET ===================
   @GetMapping("")
-  public Flux<ProductoDTO> findAll() {
+  public Flux<ClienteDTO> findAll() {
     return service.findAll();
   }
     
   @GetMapping("/{id}")
-  public Mono<ProductoDTO> findById(String id) {
+  public Mono<ClienteDTO> findById(String id) {
     return service.findById(id);
   }
   
   // ============ PUT ===================
   @PutMapping("/{id}")
-  public Mono<ProductoDTO> update(@PathVariable("id") String id, @RequestBody ProductoDTO producto) {
-    return service.update(id, producto);
+  public Mono<ClienteDTO> update(@PathVariable("id") String id, @RequestBody ClienteDTO cliente) {
+    return service.update(id, cliente);
   }
 
   // ============ DELETE ===================

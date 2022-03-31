@@ -1,4 +1,4 @@
-package uy.com.sofka.retofinalserverside.models;
+package uy.com.sofka.retofinalserverside.models.Volante;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
