@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import uy.com.sofka.retofinalserverside.models.Cliente.ClienteDTO;
+import uy.com.sofka.retofinalserverside.dto.ClienteDTO;
 import uy.com.sofka.retofinalserverside.services.IClienteService;
 
 @RestController
@@ -36,21 +36,21 @@ public class ClienteController {
     return service.findAll();
   }
     
-  @GetMapping("/{id}")
-  public Mono<ClienteDTO> findById(@PathVariable("id") String id) {
-    return service.findById(id);
+  @GetMapping("/{documento}")
+  public Mono<ClienteDTO> findByDocumento(@PathVariable("documento") String documento) {
+    return service.findByDocumento(documento);
   }
   
   // ============ PUT ===================
-  @PutMapping("/{id}")
-  public Mono<ClienteDTO> update(@PathVariable("id") String id, @RequestBody ClienteDTO cliente) {
-    return service.update(id, cliente);
+  @PutMapping("/{documento}")
+  public Mono<ClienteDTO> update(@PathVariable("documento") String documento, @RequestBody ClienteDTO cliente) {
+    return service.update(documento, cliente);
   }
 
   // ============ DELETE ===================
-  @DeleteMapping("/{id}")
-  public Mono<Void> delete(@PathVariable("id") String id) {
-    return service.delete(id);
+  @DeleteMapping("/{documento}")
+  public Mono<Void> delete(@PathVariable("documento") String documento) {
+    return service.delete(documento);
   }
 
   @DeleteMapping("")

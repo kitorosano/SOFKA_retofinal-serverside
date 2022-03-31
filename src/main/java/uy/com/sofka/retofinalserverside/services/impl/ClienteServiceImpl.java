@@ -5,9 +5,8 @@ import org.springframework.stereotype.Service;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import uy.com.sofka.retofinalserverside.models.Cliente.Cliente;
-import uy.com.sofka.retofinalserverside.models.Cliente.ClienteDTO;
-import uy.com.sofka.retofinalserverside.models.Cliente.ClienteMapper;
+import uy.com.sofka.retofinalserverside.dto.ClienteDTO;
+import uy.com.sofka.retofinalserverside.mappers.ClienteMapper;
 import uy.com.sofka.retofinalserverside.repositories.IClienteRepository;
 import uy.com.sofka.retofinalserverside.services.IClienteService;
 
@@ -21,36 +20,36 @@ public class ClienteServiceImpl implements IClienteService {
   
   @Override
   public Mono<ClienteDTO> save(ClienteDTO clienteDTO) {
-    Mono<Cliente> cliente = repository.save(mapper.fromDTO(clienteDTO));
-    return Mono.just(mapper.fromCollection(cliente.block()));
-  }
+    return mapper.fromMonoEntity2MonoDTO(repository.save(
+                                  mapper.fromDTO2Entity(clienteDTO))
+                                );
+  } // DTO -> ENTITY -> SAVE -> MONO<ENTITY> -> MONO<DTO> -> RETURN
 
   @Override
-  public Mono<ClienteDTO> findById(String id) {
-    Mono<Cliente> cliente = repository.findById(id);
-    return Mono.just(mapper.fromCollection(cliente.block()));
+  public Mono<ClienteDTO> findByDocumento(String documento) {
+    return mapper.fromMonoEntity2MonoDTO(repository.findById(documento));
   }
 
   @Override
   public Flux<ClienteDTO> findAll() {
-    Flux<Cliente> clientes = repository.findAll();
-    return Flux.fromIterable(mapper.fromCollectionList(clientes.collectList().block()));
+    return mapper.fromFluxEntity2FluxDTO(repository.findAll()
+                                          .buffer(100)
+                                          .flatMap(cliente -> 
+                                            Flux.fromStream(cliente.parallelStream())
+                                          ));
   }
 
   @Override
-  public Mono<ClienteDTO> update(String id, ClienteDTO clienteDTO) {
-    Mono<Cliente> cliente = repository.findById(id)
-                                        .flatMap(p -> {
-                                          p.setNombre(clienteDTO.getNombre());
-                                          p.setCelular(clienteDTO.getCelular());
-                                          return repository.save(p);
-                                        });
-    return Mono.just(mapper.fromCollection(cliente.block()));
+  public Mono<ClienteDTO> update(String documento, ClienteDTO clienteDTO) {
+    return mapper.fromMonoEntity2MonoDTO(repository.findById(documento)
+                                          .flatMap(cliente -> 
+                                            repository.save(mapper.fromDTO2Entity(clienteDTO, cliente))
+                                          ));
   }
 
   @Override
-  public Mono<Void> delete(String id) {
-    return repository.deleteById(id);
+  public Mono<Void> delete(String documento) {
+    return repository.deleteById(documento);
   }
 
   @Override

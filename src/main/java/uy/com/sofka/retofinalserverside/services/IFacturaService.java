@@ -2,7 +2,7 @@ package uy.com.sofka.retofinalserverside.services;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import uy.com.sofka.retofinalserverside.models.Factura.FacturaDTO;
+import uy.com.sofka.retofinalserverside.dto.FacturaDTO;
 
 public interface IFacturaService {
   Mono<FacturaDTO> save(FacturaDTO facturaDTO);

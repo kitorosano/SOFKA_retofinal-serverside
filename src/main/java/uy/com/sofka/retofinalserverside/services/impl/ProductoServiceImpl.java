@@ -5,9 +5,8 @@ import org.springframework.stereotype.Service;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import uy.com.sofka.retofinalserverside.models.Producto.Producto;
-import uy.com.sofka.retofinalserverside.models.Producto.ProductoDTO;
-import uy.com.sofka.retofinalserverside.models.Producto.ProductoMapper;
+import uy.com.sofka.retofinalserverside.dto.ProductoDTO;
+import uy.com.sofka.retofinalserverside.mappers.ProductoMapper;
 import uy.com.sofka.retofinalserverside.repositories.IProductoRepository;
 import uy.com.sofka.retofinalserverside.services.IProductoService;
 
@@ -21,36 +20,31 @@ public class ProductoServiceImpl implements IProductoService {
   
   @Override
   public Mono<ProductoDTO> save(ProductoDTO productoDTO) {
-    Mono<Producto> producto = repository.save(mapper.fromDTO(productoDTO));
-    return Mono.just(mapper.fromCollection(producto.block()));
-  }
+    return mapper.fromMonoEntity2MonoDTO(repository.save(
+                                  mapper.fromDTO2Entity(productoDTO))
+                                );
+  } // DTO -> ENTITY -> SAVE -> MONO<ENTITY> -> MONO<DTO> -> RETURN
 
   @Override
   public Mono<ProductoDTO> findById(String id) {
-    Mono<Producto> producto = repository.findById(id);
-    return Mono.just(mapper.fromCollection(producto.block()));
+    return mapper.fromMonoEntity2MonoDTO(repository.findById(id));
   }
 
   @Override
   public Flux<ProductoDTO> findAll() {
-    Flux<Producto> productos = repository.findAll();
-    return Flux.fromIterable(mapper.fromCollectionList(productos.collectList().block()));
+    return mapper.fromFluxEntity2FluxDTO(repository.findAll()
+                                          .buffer(100)
+                                          .flatMap(producto -> 
+                                            Flux.fromStream(producto.parallelStream())
+                                          ));
   }
 
   @Override
   public Mono<ProductoDTO> update(String id, ProductoDTO productoDTO) {
-    Mono<Producto> producto = repository.findById(id)
-                                        .flatMap(p -> {
-                                          p.setNombre(productoDTO.getNombre());
-                                          p.setDescripcion(productoDTO.getDescripcion());
-                                          p.setCategoria(productoDTO.getCategoria());
-                                          p.setStock(productoDTO.getStock());
-                                          p.setMinStock(productoDTO.getMinStock());
-                                          p.setMaxStock(productoDTO.getMaxStock());
-                                          p.setPrecio(productoDTO.getPrecio());
-                                          return repository.save(p);
-                                        });
-    return Mono.just(mapper.fromCollection(producto.block()));
+    return mapper.fromMonoEntity2MonoDTO(repository.findById(id)
+                                          .flatMap(producto -> 
+                                            repository.save(mapper.fromDTO2Entity(productoDTO, producto))
+                                          ));
   }
 
   @Override

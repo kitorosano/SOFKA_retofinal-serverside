@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import uy.com.sofka.retofinalserverside.models.Proveedor.ProveedorDTO;
+import uy.com.sofka.retofinalserverside.dto.ProveedorDTO;
 import uy.com.sofka.retofinalserverside.services.IProveedorService;
 
 @RestController
@@ -36,21 +36,21 @@ public class ProveedorController {
     return service.findAll();
   }
     
-  @GetMapping("/{id}")
-  public Mono<ProveedorDTO> findById(@PathVariable("id") String id) {
-    return service.findById(id);
+  @GetMapping("/{documento}")
+  public Mono<ProveedorDTO> findByDocumento(@PathVariable("documento") String documento) {
+    return service.findByDocumento(documento);
   }
   
   // ============ PUT ===================
-  @PutMapping("/{id}")
-  public Mono<ProveedorDTO> update(@PathVariable("id") String id, @RequestBody ProveedorDTO proveedor) {
-    return service.update(id, proveedor);
+  @PutMapping("/{documento}")
+  public Mono<ProveedorDTO> update(@PathVariable("documento") String documento, @RequestBody ProveedorDTO proveedor) {
+    return service.update(documento, proveedor);
   }
 
   // ============ DELETE ===================
-  @DeleteMapping("/{id}")
-  public Mono<Void> delete(@PathVariable("id") String id) {
-    return service.delete(id);
+  @DeleteMapping("/{documento}")
+  public Mono<Void> delete(@PathVariable("documento") String documento) {
+    return service.delete(documento);
   }
 
   @DeleteMapping("")

@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import uy.com.sofka.retofinalserverside.dto.FacturaDTO;
+import uy.com.sofka.retofinalserverside.mappers.FacturaMapper;
 import uy.com.sofka.retofinalserverside.models.DatabaseSequence;
-import uy.com.sofka.retofinalserverside.models.Factura.FacturaDTO;
-import uy.com.sofka.retofinalserverside.models.Factura.FacturaMapper;
 import uy.com.sofka.retofinalserverside.repositories.IFacturaRepository;
 import uy.com.sofka.retofinalserverside.services.IFacturaService;
 
@@ -25,24 +25,27 @@ public class FacturaServiceImpl implements IFacturaService {
 
   @Autowired
   private IFacturaRepository repository;
+  
+  @Autowired
+  private MongoOperations mongoOperations;
 
   FacturaMapper mapper = new FacturaMapper();
   
   @Override
   public Mono<FacturaDTO> save(FacturaDTO facturaDTO) {
-    return mapper.fromEntityMono(repository.save(
-                                  mapper.fromDTO(facturaDTO))
+    return mapper.fromMonoEntity2MonoDTO(repository.save(
+                                  mapper.fromDTO2Entity(facturaDTO))
                                 );
   } // DTO -> ENTITY -> SAVE -> MONO<ENTITY> -> MONO<DTO> -> RETURN
 
   @Override
   public Mono<FacturaDTO> findById(Long id) {
-    return mapper.fromEntityMono(repository.findById(id));
+    return mapper.fromMonoEntity2MonoDTO(repository.findById(id));
   }
 
   @Override
   public Flux<FacturaDTO> findAll() {
-    return mapper.fromEntityFlux(repository.findAll()
+    return mapper.fromFluxEntity2FluxDTO(repository.findAll()
                                           .buffer(100)
                                           .flatMap(factura -> 
                                             Flux.fromStream(factura.parallelStream())
@@ -51,9 +54,9 @@ public class FacturaServiceImpl implements IFacturaService {
 
   @Override
   public Mono<FacturaDTO> update(Long id, FacturaDTO facturaDTO) {
-    return mapper.fromEntityMono(repository.findById(id)
+    return mapper.fromMonoEntity2MonoDTO(repository.findById(id)
                                           .flatMap(factura -> 
-                                            repository.save(mapper.fromDTO(facturaDTO, factura))
+                                            repository.save(mapper.fromDTO2Entity(facturaDTO, factura))
                                           ));
   }
 
@@ -68,10 +71,6 @@ public class FacturaServiceImpl implements IFacturaService {
   }
 
   // AUTO GENERATE ID
-  
-  @Autowired
-  private MongoOperations mongoOperations;
-
   public Long generateSequence(String seqName) {
     DatabaseSequence counter = mongoOperations
                               .findAndModify(

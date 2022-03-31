@@ -1,14 +1,12 @@
-package uy.com.sofka.retofinalserverside.models.Cliente;
+package uy.com.sofka.retofinalserverside.models;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class Cliente {
-  
+public class Proveedor {
+
   @Id
-  @Indexed
   private String documento;
   private String nombre;
   private String celular;
@@ -24,7 +22,6 @@ public class Cliente {
   public String getCelular() {
     return this.celular;
   }
-
   public void setDocumento(String documento) {
     this.documento = documento;
   }

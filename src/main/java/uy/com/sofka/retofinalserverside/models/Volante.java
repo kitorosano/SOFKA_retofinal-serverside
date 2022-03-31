@@ -1,4 +1,4 @@
-package uy.com.sofka.retofinalserverside.models.Volante;
+package uy.com.sofka.retofinalserverside.models;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -19,7 +19,7 @@ public class Volante {
   private String nombreProveedor;
   private HashMap<Long, Integer> productosIngresar;
   private LocalDateTime fecha;
-  private Long documentoProveedor;
+  private String documentoProveedor;
 
   public Long getNroVolante() {
     return this.nroVolante;
@@ -37,7 +37,7 @@ public class Volante {
     return this.fecha;
   }
 
-  public Long getDocumentoProveedor() {
+  public String getDocumentoProveedor() {
     return this.documentoProveedor;
   }
 
@@ -53,7 +53,7 @@ public class Volante {
   public void setFecha(LocalDateTime fecha) {
     this.fecha = fecha;
   }
-  public void setDocumentoProveedor(Long documentoProveedor) {
+  public void setDocumentoProveedor(String documentoProveedor) {
     this.documentoProveedor = documentoProveedor;
   }
 

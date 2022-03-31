@@ -1,18 +1,18 @@
-package uy.com.sofka.retofinalserverside.models.Proveedor;
+package uy.com.sofka.retofinalserverside.models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class Proveedor {
-
+public class Cliente {
+  
   @Id
-  private String codigo;
+  private String documento;
   private String nombre;
   private String celular;
 
-  public String getCodigo() {
-    return this.codigo;
+  public String getDocumento() {
+    return this.documento;
   }
 
   public String getNombre() {
@@ -22,8 +22,9 @@ public class Proveedor {
   public String getCelular() {
     return this.celular;
   }
-  public void setCodigo(String codigo) {
-    this.codigo = codigo;
+
+  public void setDocumento(String documento) {
+    this.documento = documento;
   }
   public void setNombre(String nombre) {
     this.nombre = nombre;
@@ -35,7 +36,7 @@ public class Proveedor {
   @Override
   public String toString() {
     return "{" +
-      " codigo='" + getCodigo() + "'" +
+      " documento='" + getDocumento() + "'" +
       ", nombre='" + getNombre() + "'" +
       ", celular='" + getCelular() + "'" +
       "}";

@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import uy.com.sofka.retofinalserverside.models.Producto.ProductoDTO;
+import uy.com.sofka.retofinalserverside.dto.ProductoDTO;
 import uy.com.sofka.retofinalserverside.services.IProductoService;
 
 @SpringBootTest

@@ -1,21 +1,26 @@
-package uy.com.sofka.retofinalserverside.models.Factura;
+package uy.com.sofka.retofinalserverside.models;
 
 import java.time.LocalDateTime;
 import java.util.Map;
-import java.util.Set;
-import org.springframework.data.util.Pair;
 
-public class FacturaDTO {
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
+public class Factura {
+
+  @Transient
+  public static final String SEQUENCE_NAME = "database_sequences";
+  
+  @Id 
   private Long consecutivo;
   private LocalDateTime fecha;
   private String nombreCliente;
   private String atendedor;
-  // private Set<Pair<Long, Integer>> productosComprados;
   private Map<Long, Integer> productosComprados;
   private Double total;
-
-  public FacturaDTO(){}
-
+  
   public Long getConsecutivo() {
     return this.consecutivo;
   }
@@ -32,7 +37,6 @@ public class FacturaDTO {
     return this.atendedor;
   }
 
-  // public Set<Pair<Long, Integer>> getProductosComprados() {
   public Map<Long, Integer> getProductosComprados() {
     return this.productosComprados;
   }
@@ -52,12 +56,11 @@ public class FacturaDTO {
   public void setNombreCliente(String nombreCliente) {
     this.nombreCliente = nombreCliente;
   }
-
+  
   public void setAtendedor(String atendedor) {
     this.atendedor = atendedor;
   }
 
-  // public void setProductosComprados(Set<Pair<Long, Integer>> productosComprados) {
   public void setProductosComprados(Map<Long, Integer> productosComprados) {
     this.productosComprados = productosComprados;
   }

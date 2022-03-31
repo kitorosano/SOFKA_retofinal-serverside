@@ -2,7 +2,7 @@ package uy.com.sofka.retofinalserverside.services;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import uy.com.sofka.retofinalserverside.models.Producto.ProductoDTO;
+import uy.com.sofka.retofinalserverside.dto.ProductoDTO;
 
 public interface IProductoService {
   Mono<ProductoDTO> save(ProductoDTO productoDTO);

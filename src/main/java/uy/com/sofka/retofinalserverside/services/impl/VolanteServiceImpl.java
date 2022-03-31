@@ -11,10 +11,9 @@ import org.springframework.data.mongodb.core.query.Update;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import uy.com.sofka.retofinalserverside.dto.VolanteDTO;
+import uy.com.sofka.retofinalserverside.mappers.VolanteMapper;
 import uy.com.sofka.retofinalserverside.models.DatabaseSequence;
-import uy.com.sofka.retofinalserverside.models.Volante.Volante;
-import uy.com.sofka.retofinalserverside.models.Volante.VolanteDTO;
-import uy.com.sofka.retofinalserverside.models.Volante.VolanteMapper;
 import uy.com.sofka.retofinalserverside.repositories.IVolanteRepository;
 import uy.com.sofka.retofinalserverside.services.IVolanteService;
 
@@ -33,43 +32,31 @@ public class VolanteServiceImpl implements IVolanteService {
   
   @Override
   public Mono<VolanteDTO> save(VolanteDTO volanteDTO) {
-    Mono<Volante> volante = repository.save(mapper.fromDTO(volanteDTO));
-    return Mono.just(mapper.fromCollection(volante.block()));
-  }
-
-  public Long generateSequence(String seqName) {
-    DatabaseSequence counter = mongoOperations
-                              .findAndModify(
-                                query(where("_id").is(seqName)),
-                                new Update().inc("seq",1), options().returnNew(true).upsert(true),
-                                DatabaseSequence.class)
-                              ;
-    return !Objects.isNull(counter) ? counter.getFacturaSeq() : 1;
-  }
+    return mapper.fromMonoEntity2MonoDTO(repository.save(
+                                  mapper.fromDTO2Entity(volanteDTO))
+                                );
+  } // DTO -> ENTITY -> SAVE -> MONO<ENTITY> -> MONO<DTO> -> RETURN
 
   @Override
   public Mono<VolanteDTO> findById(Long id) {
-    Mono<Volante> volante = repository.findById(id);
-    return Mono.just(mapper.fromCollection(volante.block()));
+    return mapper.fromMonoEntity2MonoDTO(repository.findById(id));
   }
 
   @Override
   public Flux<VolanteDTO> findAll() {
-    Flux<Volante> volantes = repository.findAll();
-    return Flux.fromIterable(mapper.fromCollectionList(volantes.collectList().block()));
+    return mapper.fromFluxEntity2FluxDTO(repository.findAll()
+                                          .buffer(100)
+                                          .flatMap(volante -> 
+                                            Flux.fromStream(volante.parallelStream())
+                                          ));
   }
 
   @Override
   public Mono<VolanteDTO> update(Long id, VolanteDTO volanteDTO) {
-    Mono<Volante> volante = repository.findById(id)
-                                        .flatMap(p -> {
-                                          p.setNombreProveedor(volanteDTO.getNombreProveedor());
-                                          p.setProductosIngresar(volanteDTO.getProductosIngresar());
-                                          p.setFecha(volanteDTO.getFecha());
-                                          p.setDocumentoProveedor(volanteDTO.getDocumentoProveedor());
-                                          return repository.save(p);
-                                        });
-    return Mono.just(mapper.fromCollection(volante.block()));
+    return mapper.fromMonoEntity2MonoDTO(repository.findById(id)
+                                          .flatMap(volante -> 
+                                            repository.save(mapper.fromDTO2Entity(volanteDTO, volante))
+                                          ));
   }
 
   @Override
@@ -80,5 +67,16 @@ public class VolanteServiceImpl implements IVolanteService {
   @Override
   public Mono<Void> deleteAll() {
     return repository.deleteAll();
+  }
+
+  // AUTO GENERATE ID
+  public Long generateSequence(String seqName) {
+    DatabaseSequence counter = mongoOperations
+                              .findAndModify(
+                                query(where("_id").is(seqName)),
+                                new Update().inc("volanteSeq",1), options().returnNew(true).upsert(true),
+                                DatabaseSequence.class)
+                              ;
+    return !Objects.isNull(counter) ? counter.getVolanteSeq() : 1;
   }
 }

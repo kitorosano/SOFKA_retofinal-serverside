@@ -5,9 +5,8 @@ import org.springframework.stereotype.Service;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import uy.com.sofka.retofinalserverside.models.Proveedor.Proveedor;
-import uy.com.sofka.retofinalserverside.models.Proveedor.ProveedorDTO;
-import uy.com.sofka.retofinalserverside.models.Proveedor.ProveedorMapper;
+import uy.com.sofka.retofinalserverside.dto.ProveedorDTO;
+import uy.com.sofka.retofinalserverside.mappers.ProveedorMapper;
 import uy.com.sofka.retofinalserverside.repositories.IProveedorRepository;
 import uy.com.sofka.retofinalserverside.services.IProveedorService;
 
@@ -21,36 +20,36 @@ public class ProveedorServiceImpl implements IProveedorService {
   
   @Override
   public Mono<ProveedorDTO> save(ProveedorDTO proveedorDTO) {
-    Mono<Proveedor> proveedor = repository.save(mapper.fromDTO(proveedorDTO));
-    return Mono.just(mapper.fromCollection(proveedor.block()));
-  }
+    return mapper.fromMonoEntity2MonoDTO(repository.save(
+                                  mapper.fromDTO2Entity(proveedorDTO))
+                                );
+  } // DTO -> ENTITY -> SAVE -> MONO<ENTITY> -> MONO<DTO> -> RETURN
 
   @Override
-  public Mono<ProveedorDTO> findById(String id) {
-    Mono<Proveedor> proveedor = repository.findById(id);
-    return Mono.just(mapper.fromCollection(proveedor.block()));
+  public Mono<ProveedorDTO> findByDocumento(String documento) {
+    return mapper.fromMonoEntity2MonoDTO(repository.findById(documento));
   }
 
   @Override
   public Flux<ProveedorDTO> findAll() {
-    Flux<Proveedor> proveedores = repository.findAll();
-    return Flux.fromIterable(mapper.fromCollectionList(proveedores.collectList().block()));
+    return mapper.fromFluxEntity2FluxDTO(repository.findAll()
+                                          .buffer(100)
+                                          .flatMap(proveedor -> 
+                                            Flux.fromStream(proveedor.parallelStream())
+                                          ));
   }
 
   @Override
-  public Mono<ProveedorDTO> update(String id, ProveedorDTO proveedorDTO) {
-    Mono<Proveedor> proveedor = repository.findById(id)
-                                        .flatMap(p -> {
-                                          p.setNombre(proveedorDTO.getNombre());
-                                          p.setCelular(proveedorDTO.getCelular());
-                                          return repository.save(p);
-                                        });
-    return Mono.just(mapper.fromCollection(proveedor.block()));
+  public Mono<ProveedorDTO> update(String documento, ProveedorDTO proveedorDTO) {
+    return mapper.fromMonoEntity2MonoDTO(repository.findById(documento)
+                                          .flatMap(proveedor -> 
+                                            repository.save(mapper.fromDTO2Entity(proveedorDTO, proveedor))
+                                          ));
   }
 
   @Override
-  public Mono<Void> delete(String id) {
-    return repository.deleteById(id);
+  public Mono<Void> delete(String documento) {
+    return repository.deleteById(documento);
   }
 
   @Override

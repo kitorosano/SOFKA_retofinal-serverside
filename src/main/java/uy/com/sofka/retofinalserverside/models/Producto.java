@@ -1,4 +1,4 @@
-package uy.com.sofka.retofinalserverside.models.Producto;
+package uy.com.sofka.retofinalserverside.models;
 
 import java.util.UUID;
 

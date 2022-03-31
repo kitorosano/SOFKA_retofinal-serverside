@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import uy.com.sofka.retofinalserverside.models.Volante.VolanteDTO;
+import uy.com.sofka.retofinalserverside.dto.VolanteDTO;
 import uy.com.sofka.retofinalserverside.services.IVolanteService;
 
 @RestController

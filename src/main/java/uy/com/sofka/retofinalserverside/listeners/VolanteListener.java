@@ -1,10 +1,11 @@
-package uy.com.sofka.retofinalserverside.models.Volante;
+package uy.com.sofka.retofinalserverside.listeners;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.mapping.event.AbstractMongoEventListener;
 import org.springframework.data.mongodb.core.mapping.event.BeforeConvertEvent;
 import org.springframework.stereotype.Component;
 
+import uy.com.sofka.retofinalserverside.models.Volante;
 import uy.com.sofka.retofinalserverside.services.IVolanteService;
 
 @Component

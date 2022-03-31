@@ -2,7 +2,7 @@ package uy.com.sofka.retofinalserverside.services;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import uy.com.sofka.retofinalserverside.models.Volante.VolanteDTO;
+import uy.com.sofka.retofinalserverside.dto.VolanteDTO;
 
 public interface IVolanteService {
   Mono<VolanteDTO> save(VolanteDTO volanteDTO);
