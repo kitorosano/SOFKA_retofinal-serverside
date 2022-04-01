@@ -25,7 +25,7 @@ public class RetofinalServersideApplication {
               .version("v1.0"))
               .externalDocs(new ExternalDocumentation()
               .description("Documentation")
-              .url("https://kitorosano.github.org/SOFKA_retofinal-serverside"));
+              .url("https://sofka-ferreteria-don-raul.firebaseapp.com"));
   }
 
 }
