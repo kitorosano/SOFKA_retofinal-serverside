@@ -26,7 +26,7 @@ public class ProveedorServiceImpl implements IProveedorService {
   } // DTO -> ENTITY -> SAVE -> MONO<ENTITY> -> MONO<DTO> -> RETURN
 
   @Override
-  public Mono<ProveedorDTO> findByDocumento(String documento) {
+  public Mono<ProveedorDTO> findById(String documento) {
     return mapper.fromMonoEntity2MonoDTO(repository.findById(documento));
   }
 

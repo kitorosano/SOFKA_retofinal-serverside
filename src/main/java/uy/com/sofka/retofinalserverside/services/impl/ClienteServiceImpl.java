@@ -26,7 +26,7 @@ public class ClienteServiceImpl implements IClienteService {
   } // DTO -> ENTITY -> SAVE -> MONO<ENTITY> -> MONO<DTO> -> RETURN
 
   @Override
-  public Mono<ClienteDTO> findByDocumento(String documento) {
+  public Mono<ClienteDTO> findById(String documento) {
     return mapper.fromMonoEntity2MonoDTO(repository.findById(documento));
   }
 

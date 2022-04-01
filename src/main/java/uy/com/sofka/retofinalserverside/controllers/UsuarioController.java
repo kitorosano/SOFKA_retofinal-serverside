@@ -37,8 +37,8 @@ public class UsuarioController {
   }
     
   @GetMapping("/{uid}")
-  public Mono<UsuarioDTO> findByDocumento(@PathVariable("uid") String uid) {
-    return service.findByDocumento(uid);
+  public Mono<UsuarioDTO> findById(@PathVariable("uid") String uid) {
+    return service.findById(uid);
   }
   
   // ============ PUT ===================

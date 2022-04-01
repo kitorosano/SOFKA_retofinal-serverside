@@ -37,8 +37,8 @@ public class ProveedorController {
   }
     
   @GetMapping("/{documento}")
-  public Mono<ProveedorDTO> findByDocumento(@PathVariable("documento") String documento) {
-    return service.findByDocumento(documento);
+  public Mono<ProveedorDTO> findById(@PathVariable("documento") String documento) {
+    return service.findById(documento);
   }
   
   // ============ PUT ===================

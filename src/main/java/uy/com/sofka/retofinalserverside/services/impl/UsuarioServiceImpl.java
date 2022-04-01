@@ -26,7 +26,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
   } // DTO -> ENTITY -> SAVE -> MONO<ENTITY> -> MONO<DTO> -> RETURN
 
   @Override
-  public Mono<UsuarioDTO> findByDocumento(String uid) {
+  public Mono<UsuarioDTO> findById(String uid) {
     return mapper.fromMonoEntity2MonoDTO(repository.findById(uid));
   }
 

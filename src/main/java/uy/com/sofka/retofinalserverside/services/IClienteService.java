@@ -6,7 +6,7 @@ import uy.com.sofka.retofinalserverside.dto.ClienteDTO;
 
 public interface IClienteService {
   Mono<ClienteDTO> save(ClienteDTO clienteDTO);
-  Mono<ClienteDTO> findByDocumento(String documento);
+  Mono<ClienteDTO> findById(String documento);
   Flux<ClienteDTO> findAll();
   Mono<ClienteDTO> update(String documento, ClienteDTO clienteDTO);
   Mono<Void> delete(String documento);
