@@ -18,7 +18,7 @@ import uy.com.sofka.retofinalserverside.services.IProveedorService;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/proveedor")
+@RequestMapping("/api/proveedores")
 public class ProveedorController {
   
   @Autowired

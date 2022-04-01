@@ -18,7 +18,7 @@ import uy.com.sofka.retofinalserverside.services.IVolanteService;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/volante")
+@RequestMapping("/api/volantes")
 public class VolanteController {
   
   @Autowired

@@ -13,44 +13,44 @@ import org.springframework.web.bind.annotation.RestController;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import uy.com.sofka.retofinalserverside.dto.ProductoDTO;
-import uy.com.sofka.retofinalserverside.services.IProductoService;
+import uy.com.sofka.retofinalserverside.dto.UsuarioDTO;
+import uy.com.sofka.retofinalserverside.services.IUsuarioService;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/api/productos")
-public class ProductoController {
-  
+@RequestMapping("/api/usuarios")
+public class UsuarioController {
+   
   @Autowired
-  private IProductoService service;
+  private IUsuarioService service;
 
   // ============ POST ===================
   @PostMapping("")
-  public Mono<ProductoDTO> create(@RequestBody ProductoDTO producto) {
-    return service.save(producto);
+  public Mono<UsuarioDTO> create(@RequestBody UsuarioDTO usuario) {
+    return service.save(usuario);
   }
 
   // ============ GET ===================
   @GetMapping("")
-  public Flux<ProductoDTO> findAll() {
+  public Flux<UsuarioDTO> findAll() {
     return service.findAll();
   }
     
-  @GetMapping("/{id}")
-  public Mono<ProductoDTO> findById(@PathVariable("id") String id) {
-    return service.findById(id);
+  @GetMapping("/{uid}")
+  public Mono<UsuarioDTO> findByDocumento(@PathVariable("uid") String uid) {
+    return service.findByDocumento(uid);
   }
   
   // ============ PUT ===================
-  @PutMapping("/{id}")
-  public Mono<ProductoDTO> update(@PathVariable("id") String id, @RequestBody ProductoDTO producto) {
-    return service.update(id, producto);
+  @PutMapping("/{uid}")
+  public Mono<UsuarioDTO> update(@PathVariable("uid") String uid, @RequestBody UsuarioDTO usuario) {
+    return service.update(uid, usuario);
   }
 
   // ============ DELETE ===================
-  @DeleteMapping("/{id}")
-  public Mono<Void> delete(@PathVariable("id") String id) {
-    return service.delete(id);
+  @DeleteMapping("/{uid}")
+  public Mono<Void> delete(@PathVariable("uid") String uid) {
+    return service.delete(uid);
   }
 
   @DeleteMapping("")

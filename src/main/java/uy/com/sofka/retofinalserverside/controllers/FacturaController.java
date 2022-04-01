@@ -18,7 +18,7 @@ import uy.com.sofka.retofinalserverside.services.IFacturaService;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/factura")
+@RequestMapping("/api/facturas")
 public class FacturaController {
   
   @Autowired

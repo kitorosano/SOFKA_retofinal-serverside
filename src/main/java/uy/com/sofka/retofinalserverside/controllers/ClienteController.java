@@ -18,7 +18,7 @@ import uy.com.sofka.retofinalserverside.services.IClienteService;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/cliente")
+@RequestMapping("/api/clientes")
 public class ClienteController {
    
   @Autowired
