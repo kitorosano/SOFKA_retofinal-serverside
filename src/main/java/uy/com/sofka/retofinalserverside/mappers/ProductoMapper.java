@@ -91,7 +91,7 @@ public class ProductoMapper {
     });
   }
 
-  public Flux<ProductoDTO> fromFluxEntity2FluxDTO(Flux<Producto> entity) {   
+  public Flux<ProductoDTO> fromFluxEntity2FluxDTO(Flux<Producto> entity) { 
     return entity.map(producto -> {
       ProductoDTO dto = new ProductoDTO();
       dto.setId(producto.getId());

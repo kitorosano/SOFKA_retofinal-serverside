@@ -6,8 +6,8 @@ public class ProductoDTO {
   private String descripcion;
   private String categoria;
   private Integer stock;
-  private Integer minStock;
-  private Integer maxStock;
+  private Integer minStock = 0;
+  private Integer maxStock = Integer.MAX_VALUE;
   private Double precio;
 
   public ProductoDTO() {}
@@ -70,6 +70,9 @@ public class ProductoDTO {
     this.categoria = categoria;
   }
   public void setStock(Integer stock) {
+    // verificar que no sea null
+    if (stock == null)
+      throw new IllegalArgumentException("El stock no puede ser nulo");
     // verificar que no sea menor a minStock o mayor a maxStock
     if (stock < this.minStock)
       throw new IllegalArgumentException("El stock esta superando el minimo permitido");
